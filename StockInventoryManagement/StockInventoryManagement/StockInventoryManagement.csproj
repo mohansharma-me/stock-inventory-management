@@ -40,6 +40,9 @@
   <PropertyGroup>
     <ApplicationIcon>eject.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ObjectListView">
       <HintPath>D:\Development Tools\Different Modules\C#\ObjectListView\ObjectListView.dll</HintPath>
@@ -133,6 +136,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

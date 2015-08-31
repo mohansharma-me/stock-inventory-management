@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockInventoryManagement", "StockInventoryManagement\StockInventoryManagement.csproj", "{FA278EB9-05D2-49EE-801F-ACE493AFC205}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{F9E3957D-496A-4169-97BD-DDEF7852AC8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -15,6 +17,8 @@ Global
 		{FA278EB9-05D2-49EE-801F-ACE493AFC205}.Debug|x86.Build.0 = Debug|x86
 		{FA278EB9-05D2-49EE-801F-ACE493AFC205}.Release|x86.ActiveCfg = Release|x86
 		{FA278EB9-05D2-49EE-801F-ACE493AFC205}.Release|x86.Build.0 = Release|x86
+		{F9E3957D-496A-4169-97BD-DDEF7852AC8F}.Debug|x86.ActiveCfg = Debug
+		{F9E3957D-496A-4169-97BD-DDEF7852AC8F}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

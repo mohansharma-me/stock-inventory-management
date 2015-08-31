@@ -78,6 +78,7 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.lblTotalStatus = new System.Windows.Forms.Label();
             this.lvReport = new BrightIdeasSoftware.ObjectListView();
             this.olvColumnDate = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnSales = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -99,7 +100,6 @@
             this.chkPurchases = new System.Windows.Forms.CheckBox();
             this.chkSales = new System.Windows.Forms.CheckBox();
             this.olvColumnPrice = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.lblTotalStatus = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -153,7 +153,7 @@
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 30);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(976, 674);
+            this.tabPage1.Size = new System.Drawing.Size(980, 674);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Sale";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -161,6 +161,7 @@
             // cmbClientRef
             // 
             this.cmbClientRef.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbClientRef.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClientRef.FormattingEnabled = true;
             this.cmbClientRef.Location = new System.Drawing.Point(90, 420);
             this.cmbClientRef.Name = "cmbClientRef";
@@ -234,9 +235,9 @@
             this.lvItemsSale.AllColumns.Add(this.olvColumnTotalSalePrice);
             this.lvItemsSale.AllowColumnReorder = true;
             this.lvItemsSale.AlternateRowBackColor = System.Drawing.Color.Gainsboro;
-            this.lvItemsSale.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvItemsSale.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvItemsSale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lvItemsSale.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.DoubleClick;
             this.lvItemsSale.CellEditTabChangesRows = true;
@@ -401,7 +402,8 @@
             // 
             // cmbItemCode
             // 
-            this.cmbItemCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbItemCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbItemCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbItemCode.FormattingEnabled = true;
             this.cmbItemCode.Location = new System.Drawing.Point(24, 60);
             this.cmbItemCode.Name = "cmbItemCode";
@@ -464,7 +466,7 @@
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Location = new System.Drawing.Point(4, 30);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(976, 674);
+            this.tabPage2.Size = new System.Drawing.Size(980, 674);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Purchase";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -472,23 +474,22 @@
             // cmbClientRefPurchase
             // 
             this.cmbClientRefPurchase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbClientRefPurchase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClientRefPurchase.FormattingEnabled = true;
-            this.cmbClientRefPurchase.Location = new System.Drawing.Point(100, 579);
+            this.cmbClientRefPurchase.Location = new System.Drawing.Point(20, 580);
             this.cmbClientRefPurchase.Name = "cmbClientRefPurchase";
-            this.cmbClientRefPurchase.Size = new System.Drawing.Size(270, 29);
+            this.cmbClientRefPurchase.Size = new System.Drawing.Size(360, 29);
             this.cmbClientRefPurchase.TabIndex = 15;
-            this.cmbClientRefPurchase.Visible = false;
             // 
             // label19
             // 
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(28, 579);
+            this.label19.Location = new System.Drawing.Point(20, 550);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(57, 21);
             this.label19.TabIndex = 14;
             this.label19.Text = "Client :";
-            this.label19.Visible = false;
             // 
             // lvItemsPurchase
             // 
@@ -498,9 +499,9 @@
             this.lvItemsPurchase.AllColumns.Add(this.olvColumnTotalPrice);
             this.lvItemsPurchase.AllowColumnReorder = true;
             this.lvItemsPurchase.AlternateRowBackColor = System.Drawing.Color.Gainsboro;
-            this.lvItemsPurchase.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvItemsPurchase.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvItemsPurchase.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lvItemsPurchase.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.DoubleClick;
             this.lvItemsPurchase.CellEditTabChangesRows = true;
@@ -518,7 +519,7 @@
             this.lvItemsPurchase.HeaderWordWrap = true;
             this.lvItemsPurchase.HighlightBackgroundColor = System.Drawing.SystemColors.Highlight;
             this.lvItemsPurchase.HighlightForegroundColor = System.Drawing.Color.White;
-            this.lvItemsPurchase.Location = new System.Drawing.Point(396, 60);
+            this.lvItemsPurchase.Location = new System.Drawing.Point(400, 60);
             this.lvItemsPurchase.Name = "lvItemsPurchase";
             this.lvItemsPurchase.OverlayText.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvItemsPurchase.OverlayText.Text = "Total Price";
@@ -576,7 +577,7 @@
             // btnAddToStock
             // 
             this.btnAddToStock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAddToStock.Location = new System.Drawing.Point(24, 623);
+            this.btnAddToStock.Location = new System.Drawing.Point(20, 620);
             this.btnAddToStock.Name = "btnAddToStock";
             this.btnAddToStock.Size = new System.Drawing.Size(136, 36);
             this.btnAddToStock.TabIndex = 6;
@@ -586,7 +587,7 @@
             // 
             // btnClearPurchaseForm
             // 
-            this.btnClearPurchaseForm.Location = new System.Drawing.Point(120, 192);
+            this.btnClearPurchaseForm.Location = new System.Drawing.Point(120, 180);
             this.btnClearPurchaseForm.Name = "btnClearPurchaseForm";
             this.btnClearPurchaseForm.Size = new System.Drawing.Size(84, 36);
             this.btnClearPurchaseForm.TabIndex = 4;
@@ -596,7 +597,7 @@
             // 
             // btnAddPurchaseItem
             // 
-            this.btnAddPurchaseItem.Location = new System.Drawing.Point(24, 192);
+            this.btnAddPurchaseItem.Location = new System.Drawing.Point(20, 180);
             this.btnAddPurchaseItem.Name = "btnAddPurchaseItem";
             this.btnAddPurchaseItem.Size = new System.Drawing.Size(84, 36);
             this.btnAddPurchaseItem.TabIndex = 3;
@@ -607,7 +608,7 @@
             // txtPPU1
             // 
             this.txtPPU1.DecimalPlaces = 2;
-            this.txtPPU1.Location = new System.Drawing.Point(204, 144);
+            this.txtPPU1.Location = new System.Drawing.Point(200, 140);
             this.txtPPU1.Maximum = new decimal(new int[] {
             99999999,
             0,
@@ -620,7 +621,7 @@
             // txtQty1
             // 
             this.txtQty1.DecimalPlaces = 2;
-            this.txtQty1.Location = new System.Drawing.Point(24, 144);
+            this.txtQty1.Location = new System.Drawing.Point(20, 140);
             this.txtQty1.Maximum = new decimal(new int[] {
             0,
             0,
@@ -633,7 +634,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(204, 108);
+            this.label6.Location = new System.Drawing.Point(200, 104);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(109, 21);
             this.label6.TabIndex = 9;
@@ -641,10 +642,10 @@
             // 
             // cmbItemCode1
             // 
-            this.cmbItemCode1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cmbItemCode1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbItemCode1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbItemCode1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbItemCode1.FormattingEnabled = true;
-            this.cmbItemCode1.Location = new System.Drawing.Point(24, 60);
+            this.cmbItemCode1.Location = new System.Drawing.Point(20, 60);
             this.cmbItemCode1.Name = "cmbItemCode1";
             this.cmbItemCode1.Size = new System.Drawing.Size(348, 29);
             this.cmbItemCode1.TabIndex = 0;
@@ -653,7 +654,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(24, 108);
+            this.label7.Location = new System.Drawing.Point(20, 104);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 21);
             this.label7.TabIndex = 11;
@@ -673,7 +674,7 @@
             // lblTotalPurchasedItems
             // 
             this.lblTotalPurchasedItems.AutoSize = true;
-            this.lblTotalPurchasedItems.Location = new System.Drawing.Point(392, 24);
+            this.lblTotalPurchasedItems.Location = new System.Drawing.Point(400, 30);
             this.lblTotalPurchasedItems.Name = "lblTotalPurchasedItems";
             this.lblTotalPurchasedItems.Size = new System.Drawing.Size(48, 21);
             this.lblTotalPurchasedItems.TabIndex = 12;
@@ -682,7 +683,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(24, 24);
+            this.label9.Location = new System.Drawing.Point(20, 30);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(130, 21);
             this.label9.TabIndex = 13;
@@ -707,9 +708,9 @@
             // 
             // tabControl2
             // 
-            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl2.Controls.Add(this.tabPage4);
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Location = new System.Drawing.Point(15, 57);
@@ -732,6 +733,16 @@
             this.tabPage4.Text = "Report";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // lblTotalStatus
+            // 
+            this.lblTotalStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTotalStatus.AutoSize = true;
+            this.lblTotalStatus.Location = new System.Drawing.Point(10, 540);
+            this.lblTotalStatus.Name = "lblTotalStatus";
+            this.lblTotalStatus.Size = new System.Drawing.Size(272, 21);
+            this.lblTotalStatus.TabIndex = 7;
+            this.lblTotalStatus.Text = "Total Sale : 0/- and Total Purchase : 0/-";
+            // 
             // lvReport
             // 
             this.lvReport.AllColumns.Add(this.olvColumnDate);
@@ -739,9 +750,9 @@
             this.lvReport.AllColumns.Add(this.olvColumnPurchases);
             this.lvReport.AllowColumnReorder = true;
             this.lvReport.AlternateRowBackColor = System.Drawing.Color.Gainsboro;
-            this.lvReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvReport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lvReport.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.DoubleClick;
             this.lvReport.CellEditTabChangesRows = true;
@@ -761,14 +772,14 @@
             this.lvReport.Location = new System.Drawing.Point(10, 10);
             this.lvReport.Name = "lvReport";
             this.lvReport.OverlayText.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvReport.OverlayText.Text = "Total Price";
+            this.lvReport.OverlayText.Text = "Double click to \'Print Invoice\'";
             this.lvReport.OverlayText.TextColor = System.Drawing.Color.Black;
             this.lvReport.RenderNonEditableCheckboxesAsDisabled = true;
             this.lvReport.SelectedColumnTint = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
             this.lvReport.ShowCommandMenuOnRightClick = true;
             this.lvReport.ShowGroups = false;
             this.lvReport.ShowItemToolTips = true;
-            this.lvReport.Size = new System.Drawing.Size(920, 520);
+            this.lvReport.Size = new System.Drawing.Size(920, 528);
             this.lvReport.TabIndex = 6;
             this.lvReport.TintSortColumn = true;
             this.lvReport.UnfocusedHighlightBackgroundColor = System.Drawing.Color.SteelBlue;
@@ -780,7 +791,6 @@
             this.lvReport.UseFiltering = true;
             this.lvReport.UseHotItem = true;
             this.lvReport.UseHyperlinks = true;
-            this.lvReport.UseOverlays = false;
             this.lvReport.View = System.Windows.Forms.View.Details;
             this.lvReport.DoubleClick += new System.EventHandler(this.lvReport_DoubleClick);
             // 
@@ -914,16 +924,16 @@
             // 
             this.dtTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtTo.Location = new System.Drawing.Point(678, 12);
+            this.dtTo.Location = new System.Drawing.Point(710, 10);
             this.dtTo.Name = "dtTo";
-            this.dtTo.Size = new System.Drawing.Size(176, 29);
+            this.dtTo.Size = new System.Drawing.Size(144, 29);
             this.dtTo.TabIndex = 5;
             // 
             // label14
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(637, 18);
+            this.label14.Location = new System.Drawing.Point(670, 15);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(32, 21);
             this.label14.TabIndex = 4;
@@ -934,16 +944,16 @@
             this.dtFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtFrom.CustomFormat = "dd-MM-yyyy";
             this.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFrom.Location = new System.Drawing.Point(404, 12);
+            this.dtFrom.Location = new System.Drawing.Point(520, 10);
             this.dtFrom.Name = "dtFrom";
-            this.dtFrom.Size = new System.Drawing.Size(227, 29);
+            this.dtFrom.Size = new System.Drawing.Size(141, 29);
             this.dtFrom.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(342, 18);
+            this.label5.Location = new System.Drawing.Point(460, 13);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 21);
             this.label5.TabIndex = 2;
@@ -980,16 +990,6 @@
             this.olvColumnPrice.DisplayIndex = 1;
             this.olvColumnPrice.Text = "Price";
             this.olvColumnPrice.Width = 78;
-            // 
-            // lblTotalStatus
-            // 
-            this.lblTotalStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblTotalStatus.AutoSize = true;
-            this.lblTotalStatus.Location = new System.Drawing.Point(10, 540);
-            this.lblTotalStatus.Name = "lblTotalStatus";
-            this.lblTotalStatus.Size = new System.Drawing.Size(272, 21);
-            this.lblTotalStatus.TabIndex = 7;
-            this.lblTotalStatus.Text = "Total Sale : 0/- and Total Purchase : 0/-";
             // 
             // frmTransaction
             // 

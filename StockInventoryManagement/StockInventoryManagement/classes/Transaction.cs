@@ -13,7 +13,7 @@ namespace StockInventoryManagement.classes
             PURCHASE //2
         }
 
-        public void init(System.Data.SQLite.SQLiteDataReader dr)
+        public void init(ref System.Data.SQLite.SQLiteDataReader dr)
         {
             try
             {

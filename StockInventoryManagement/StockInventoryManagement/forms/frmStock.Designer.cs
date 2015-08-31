@@ -83,18 +83,21 @@
             // olvColumnRef
             // 
             this.olvColumnRef.AspectName = "itemCode";
+            this.olvColumnRef.IsEditable = false;
             this.olvColumnRef.Text = "Reference";
             this.olvColumnRef.Width = 104;
             // 
             // olvColumnWoodType
             // 
             this.olvColumnWoodType.AspectName = "itemName";
-            this.olvColumnWoodType.Text = "Wood type";
+            this.olvColumnWoodType.IsEditable = false;
+            this.olvColumnWoodType.Text = "Item";
             this.olvColumnWoodType.Width = 184;
             // 
             // olvColumn3
             // 
             this.olvColumn3.AspectName = "qty";
+            this.olvColumn3.IsEditable = false;
             this.olvColumn3.Text = "Available";
             this.olvColumn3.Width = 142;
             // 

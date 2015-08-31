@@ -1,7 +1,18 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="StockInventoryManagement.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="appOwner" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Patel Auto Technologies</Value>
+    </Setting>
+    <Setting Name="appVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1.0</Value>
+    </Setting>
+    <Setting Name="appUID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">wcodez.stock-inventory-management</Value>
+    </Setting>
+    <Setting Name="appSettingVAT" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">18</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

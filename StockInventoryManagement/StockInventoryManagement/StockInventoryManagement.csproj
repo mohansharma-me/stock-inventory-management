@@ -37,6 +37,9 @@
   <PropertyGroup>
     <StartupObject>StockInventoryManagement.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>eject.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ObjectListView">
       <HintPath>D:\Development Tools\Different Modules\C#\ObjectListView\ObjectListView.dll</HintPath>
@@ -141,6 +144,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="eject.ico" />
     <Content Include="lib\ObjectListView.dll" />
     <Content Include="lib\System.Data.SQLite.dll" />
   </ItemGroup>

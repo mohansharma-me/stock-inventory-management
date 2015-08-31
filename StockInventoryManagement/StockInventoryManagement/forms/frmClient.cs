@@ -34,14 +34,6 @@ namespace StockInventoryManagement.forms
                     Invoke(new Action(() =>
                     {
                         lvClients.SetObjects(clients);
-
-                        olvColumn1.AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
-                        olvColumn2.AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
-                        olvColumn3.AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
-                        olvColumn4.AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
-                        olvColumn5.AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
-                        olvColumn6.AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
-                        olvColumn7.AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
                     }));
 
                     #endregion
@@ -178,6 +170,54 @@ namespace StockInventoryManagement.forms
 
                 Enabled = false;
 
+            }
+        }
+
+        private void lvClients_DoubleClick(object sender, EventArgs e)
+        {
+            if(lvClients.SelectedItems.Count==1)
+            {
+                long clientId = (lvClients.SelectedObjects[0] as classes.Client).id;
+                Enabled = false;
+                new System.Threading.Thread(()=> {
+                    try
+                    {
+                        #region MyRegion
+                        List<classes.Transaction> tranList = Job.Database.getClientTransactions(clientId);
+                        Invoke(new Action(()=> {
+                            lvClientTransactions.SetObjects(tranList);
+                            lvClientTransactions.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                            tabControl1.SelectTab(2);
+                            lvClientTransactions.Focus();
+                        }));
+                        #endregion
+                    }
+                    catch (Exception ex)
+                    {
+                        Invoke(new Action(()=> {
+                            MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }));
+                    } finally
+                    {
+                        Invoke(new Action(()=> {
+                            Enabled = true;
+                        }));
+                    }
+                }).Start();
+            }
+        }
+
+        private void lvClients_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvClientTransactions_DoubleClick(object sender, EventArgs e)
+        {
+            if(lvClientTransactions.SelectedItems.Count==1)
+            {
+                long tranId = (lvClientTransactions.SelectedObjects[0] as classes.Transaction).id;
+                Job.showInvoiceDialog(this, tranId);
             }
         }
     }

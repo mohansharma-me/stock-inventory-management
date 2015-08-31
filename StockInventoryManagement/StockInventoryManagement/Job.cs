@@ -231,12 +231,65 @@ namespace StockInventoryManagement
 
             #region Database Operation Methods
 
+            public static classes.Transaction getTransaction(long tranId)
+            {
+                classes.Transaction tran = null;
+                try
+                {
+                    #region MyRegion
+                    SQLiteDataReader dr = executeReader("select * from _transaction where tranId=@id", new SQLiteParameter[] {
+                        new SQLiteParameter("@id",tranId)
+                    });
+                    if(dr!=null && dr.Read())
+                    {
+                        tran = new classes.Transaction();
+                        tran.init(ref dr);
+                    }
+                    #endregion
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Unable to get transaction details. [" + ex.Message + "]");
+                }
+                return tran;
+            }
+
+            public static List<classes.Transaction> getClientTransactions(long clientId)
+            {
+                List<classes.Transaction> tranList = new List<classes.Transaction>();
+                try
+                {
+                    SQLiteDataReader dr = executeReader("select tranId from _transaction where tranClientId=@clientId", new SQLiteParameter[] { new SQLiteParameter("@clientId", clientId) });
+                    if(dr!=null)
+                    {
+                        while(dr.Read())
+                        {
+                            long tranId = long.Parse(dr["tranId"].ToString());
+                            classes.Transaction tran = getTransaction(tranId);
+                            if (tran != null)
+                                tranList.Add(tran);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Unable to get client transaction details. [" + ex.Message + "]");
+                }
+                return tranList;
+            }
+
             public static List<classes.TransactionReport> getTransactionReport(ref string mostItem, ref string leastItem, ref double totalSales, ref double totalPurchase, DateTime? from, DateTime? to)
             {
                 try
                 {
                     System.Collections.Hashtable table = new System.Collections.Hashtable();
                     List<classes.TransactionReport> report = new List<classes.TransactionReport>();
+
+                    if (from.HasValue)
+                        from = new DateTime(from.Value.Year, from.Value.Month, from.Value.Day, 0, 0, 0);
+
+                    if (to.HasValue)
+                        to = new DateTime(to.Value.Year, to.Value.Month, to.Value.Day, 23, 59, 59);
 
                     String where = "where ";
                     if (from.HasValue && to.HasValue)
@@ -713,9 +766,9 @@ namespace StockInventoryManagement
                 SolidBrush blackBrush = new SolidBrush(Color.Black);
                 Graphics g = e.Graphics;
                 float x = 10, y = 10;
-                g.DrawString("A.S. TIMBER IMPORTERS", baseFont, blackBrush, x, y);
+                g.DrawString(Properties.Settings.Default.appOwner, baseFont, blackBrush, x, y);
                 y += baseFont.Height + 5;
-                g.DrawString("MALTA", baseFont, blackBrush, x, y);
+                g.DrawString("", baseFont, blackBrush, x, y);
                 g.DrawString("INVOICE", new Font(baseFont, FontStyle.Bold), blackBrush, 600, y);
                 y += baseFont.Height + 15;
                 g.DrawLine(new Pen(blackBrush, 10), x, y, e.PageBounds.Width - 10, y);
@@ -754,7 +807,7 @@ namespace StockInventoryManagement
                 x += 10 + 500;
                 g.DrawString("Total: " + total_price.ToString("0.00"), baseFont, blackBrush, x, y);
                 y += baseFont.Height + 10;
-                double vat = total_price * 18 / 100;
+                double vat = total_price * Properties.Settings.Default.appSettingVAT / 100;
                 vat += total_price;
                 g.DrawString("VAT: " + vat.ToString("0.00"), baseFont, blackBrush, x, y);
 

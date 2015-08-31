@@ -135,7 +135,9 @@ namespace StockInventoryManagement.forms
                     Invoke(new Action(() =>
                     {
                         cmbClientRef.Items.Clear();
+                        cmbClientRefPurchase.Items.Clear();
                         cmbClientRef.Items.AddRange(clients.ToArray());
+                        cmbClientRefPurchase.Items.AddRange(clients.ToArray());
                     }));
 
                     #endregion
@@ -186,11 +188,17 @@ namespace StockInventoryManagement.forms
 
         private void btnAddToStock_Click(object sender, EventArgs e)
         {
+            if(cmbClientRefPurchase.SelectedIndex==-1)
+            {
+                MessageBox.Show(this, "Please select client from list shown near to 'Add to Stock' button.", "Client not selected", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                cmbClientRefPurchase.Focus();
+                return;
+            }
             // iterate each added item
             // find existing if not add that new item
             // prepare transaction item list
             // add new transaction with items
-
+            long clientId = (cmbClientRefPurchase.SelectedItem as classes.Client).id;
             System.Collections.IEnumerable items = lvItemsPurchase.Objects;
 
             new System.Threading.Thread(() =>
@@ -238,7 +246,7 @@ namespace StockInventoryManagement.forms
 
                         #region Submit new Transaction
 
-                        bool added = Job.Database.addTransaction(totalAmount, DateTime.Today, classes.Transaction.TransactionType.PURCHASE, "", null, tItems);
+                        bool added = Job.Database.addTransaction(totalAmount, DateTime.Today, classes.Transaction.TransactionType.PURCHASE, "", null, tItems, clientId);
                         if (added)
                         {
                             Invoke(new Action(() =>
@@ -458,6 +466,14 @@ namespace StockInventoryManagement.forms
 
         private void btnPrintInvoice_Click(object sender, EventArgs e)
         {
+
+            if (cmbClientRef.SelectedIndex == -1)
+            {
+                MessageBox.Show(this, "Please select client from list shown near 'Print Invoice' button.", "Client not selected", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                cmbClientRef.Focus();
+                return;
+            }
+
             System.Collections.IEnumerable items = lvItemsSale.Objects;
 
             String deliveryAddress = txtDeliveryAddress.Text.Trim();
@@ -465,12 +481,7 @@ namespace StockInventoryManagement.forms
             if (deliveryAddress.Length > 0)
                 deliveryDate = dtDelivery.Value;
 
-            long client = 0;
-            if (cmbClientRef.SelectedIndex > -1)
-            {
-                client = ((classes.Client)cmbClientRef.SelectedItem).id;
-            }
-
+            long client = ((classes.Client)cmbClientRef.SelectedItem).id;
             new System.Threading.Thread(() =>
             {
 

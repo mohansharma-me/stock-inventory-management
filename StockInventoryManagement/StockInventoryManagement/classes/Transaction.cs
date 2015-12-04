@@ -21,6 +21,7 @@ namespace StockInventoryManagement.classes
                 this.id = long.Parse(dr["tranId"].ToString());
                 this.client_id = long.Parse(dr["tranClientId"].ToString());
                 this.total_price = double.Parse(dr["tranTotalPrice"].ToString());
+                this.total_discount = double.Parse(dr["tranTotalDiscount"].ToString());
                 this.timestamp = (DateTime?)dr["tranTime"];
                 this.type = dr["tranType"].ToString().Equals("SALE") ? TransactionType.SALE : TransactionType.PURCHASE;
 
@@ -36,7 +37,7 @@ namespace StockInventoryManagement.classes
         }
 
         public long id;
-        public double total_price;
+        public double total_price, total_discount;
         public DateTime? timestamp;
         public TransactionType type;
 

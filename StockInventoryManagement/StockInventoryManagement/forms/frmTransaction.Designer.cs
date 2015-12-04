@@ -126,7 +126,7 @@
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ItemSize = new System.Drawing.Size(66, 26);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(0, 0);
             this.tabControl1.SelectedIndex = 0;
@@ -153,7 +153,7 @@
             this.tabPage1.Controls.Add(this.label13);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 30);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Size = new System.Drawing.Size(1228, 852);
             this.tabPage1.TabIndex = 0;
@@ -167,7 +167,7 @@
             this.cmbClientRef.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbClientRef.FormattingEnabled = true;
             this.cmbClientRef.Location = new System.Drawing.Point(112, 526);
-            this.cmbClientRef.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbClientRef.Margin = new System.Windows.Forms.Padding(4);
             this.cmbClientRef.Name = "cmbClientRef";
             this.cmbClientRef.Size = new System.Drawing.Size(344, 36);
             this.cmbClientRef.TabIndex = 9;
@@ -180,9 +180,9 @@
             this.groupBox1.Controls.Add(this.txtDeliveryAddress);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Location = new System.Drawing.Point(25, 589);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(435, 165);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
@@ -192,7 +192,7 @@
             // 
             this.dtDelivery.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtDelivery.Location = new System.Drawing.Point(120, 105);
-            this.dtDelivery.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtDelivery.Margin = new System.Windows.Forms.Padding(4);
             this.dtDelivery.Name = "dtDelivery";
             this.dtDelivery.Size = new System.Drawing.Size(299, 34);
             this.dtDelivery.TabIndex = 3;
@@ -210,7 +210,7 @@
             // txtDeliveryAddress
             // 
             this.txtDeliveryAddress.Location = new System.Drawing.Point(120, 45);
-            this.txtDeliveryAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDeliveryAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtDeliveryAddress.Name = "txtDeliveryAddress";
             this.txtDeliveryAddress.Size = new System.Drawing.Size(299, 34);
             this.txtDeliveryAddress.TabIndex = 1;
@@ -268,7 +268,7 @@
             this.lvItemsSale.HighlightBackgroundColor = System.Drawing.SystemColors.Highlight;
             this.lvItemsSale.HighlightForegroundColor = System.Drawing.Color.White;
             this.lvItemsSale.Location = new System.Drawing.Point(495, 75);
-            this.lvItemsSale.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lvItemsSale.Margin = new System.Windows.Forms.Padding(4);
             this.lvItemsSale.Name = "lvItemsSale";
             this.lvItemsSale.OverlayText.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvItemsSale.OverlayText.Text = "Total Price";
@@ -328,7 +328,7 @@
             // 
             this.btnPrintInvoice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnPrintInvoice.Location = new System.Drawing.Point(25, 776);
-            this.btnPrintInvoice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPrintInvoice.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrintInvoice.Name = "btnPrintInvoice";
             this.btnPrintInvoice.Size = new System.Drawing.Size(165, 45);
             this.btnPrintInvoice.TabIndex = 11;
@@ -338,8 +338,8 @@
             // 
             // btnClearSaleForm
             // 
-            this.btnClearSaleForm.Location = new System.Drawing.Point(360, 240);
-            this.btnClearSaleForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClearSaleForm.Location = new System.Drawing.Point(370, 170);
+            this.btnClearSaleForm.Margin = new System.Windows.Forms.Padding(4);
             this.btnClearSaleForm.Name = "btnClearSaleForm";
             this.btnClearSaleForm.Size = new System.Drawing.Size(105, 45);
             this.btnClearSaleForm.TabIndex = 7;
@@ -349,8 +349,8 @@
             // 
             // btnAddSaleItem
             // 
-            this.btnAddSaleItem.Location = new System.Drawing.Point(30, 240);
-            this.btnAddSaleItem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddSaleItem.Location = new System.Drawing.Point(260, 170);
+            this.btnAddSaleItem.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddSaleItem.Name = "btnAddSaleItem";
             this.btnAddSaleItem.Size = new System.Drawing.Size(105, 45);
             this.btnAddSaleItem.TabIndex = 6;
@@ -360,23 +360,24 @@
             // 
             // txtDiscount
             // 
+            this.txtDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtDiscount.DecimalPlaces = 2;
-            this.txtDiscount.Location = new System.Drawing.Point(255, 180);
-            this.txtDiscount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDiscount.Location = new System.Drawing.Point(130, 470);
+            this.txtDiscount.Margin = new System.Windows.Forms.Padding(4);
             this.txtDiscount.Maximum = new decimal(new int[] {
             999999999,
             0,
             0,
             0});
             this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(210, 34);
+            this.txtDiscount.Size = new System.Drawing.Size(330, 34);
             this.txtDiscount.TabIndex = 4;
             // 
             // txtPPU
             // 
             this.txtPPU.DecimalPlaces = 2;
             this.txtPPU.Location = new System.Drawing.Point(30, 180);
-            this.txtPPU.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPPU.Margin = new System.Windows.Forms.Padding(4);
             this.txtPPU.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -388,8 +389,9 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(255, 135);
+            this.label4.Location = new System.Drawing.Point(20, 470);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 28);
@@ -400,7 +402,7 @@
             // 
             this.txtQty.DecimalPlaces = 2;
             this.txtQty.Location = new System.Drawing.Point(255, 75);
-            this.txtQty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtQty.Margin = new System.Windows.Forms.Padding(4);
             this.txtQty.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -426,7 +428,7 @@
             this.cmbItemCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbItemCode.FormattingEnabled = true;
             this.cmbItemCode.Location = new System.Drawing.Point(30, 75);
-            this.cmbItemCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbItemCode.Margin = new System.Windows.Forms.Padding(4);
             this.cmbItemCode.Name = "cmbItemCode";
             this.cmbItemCode.Size = new System.Drawing.Size(209, 36);
             this.cmbItemCode.TabIndex = 1;
@@ -490,7 +492,7 @@
             this.tabPage2.Controls.Add(this.lblTotalPurchasedItems);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Location = new System.Drawing.Point(4, 30);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Size = new System.Drawing.Size(1228, 852);
             this.tabPage2.TabIndex = 1;
@@ -504,7 +506,7 @@
             this.cmbClientRefPurchase.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbClientRefPurchase.FormattingEnabled = true;
             this.cmbClientRefPurchase.Location = new System.Drawing.Point(25, 726);
-            this.cmbClientRefPurchase.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbClientRefPurchase.Margin = new System.Windows.Forms.Padding(4);
             this.cmbClientRefPurchase.Name = "cmbClientRefPurchase";
             this.cmbClientRefPurchase.Size = new System.Drawing.Size(449, 36);
             this.cmbClientRefPurchase.TabIndex = 15;
@@ -549,7 +551,7 @@
             this.lvItemsPurchase.HighlightBackgroundColor = System.Drawing.SystemColors.Highlight;
             this.lvItemsPurchase.HighlightForegroundColor = System.Drawing.Color.White;
             this.lvItemsPurchase.Location = new System.Drawing.Point(500, 75);
-            this.lvItemsPurchase.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lvItemsPurchase.Margin = new System.Windows.Forms.Padding(4);
             this.lvItemsPurchase.Name = "lvItemsPurchase";
             this.lvItemsPurchase.OverlayText.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvItemsPurchase.OverlayText.Text = "Total Price";
@@ -608,7 +610,7 @@
             // 
             this.btnAddToStock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAddToStock.Location = new System.Drawing.Point(25, 776);
-            this.btnAddToStock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddToStock.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddToStock.Name = "btnAddToStock";
             this.btnAddToStock.Size = new System.Drawing.Size(170, 45);
             this.btnAddToStock.TabIndex = 6;
@@ -619,7 +621,7 @@
             // btnClearPurchaseForm
             // 
             this.btnClearPurchaseForm.Location = new System.Drawing.Point(150, 225);
-            this.btnClearPurchaseForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClearPurchaseForm.Margin = new System.Windows.Forms.Padding(4);
             this.btnClearPurchaseForm.Name = "btnClearPurchaseForm";
             this.btnClearPurchaseForm.Size = new System.Drawing.Size(105, 45);
             this.btnClearPurchaseForm.TabIndex = 4;
@@ -630,7 +632,7 @@
             // btnAddPurchaseItem
             // 
             this.btnAddPurchaseItem.Location = new System.Drawing.Point(25, 225);
-            this.btnAddPurchaseItem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddPurchaseItem.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddPurchaseItem.Name = "btnAddPurchaseItem";
             this.btnAddPurchaseItem.Size = new System.Drawing.Size(105, 45);
             this.btnAddPurchaseItem.TabIndex = 3;
@@ -642,7 +644,7 @@
             // 
             this.txtPPU1.DecimalPlaces = 2;
             this.txtPPU1.Location = new System.Drawing.Point(250, 175);
-            this.txtPPU1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPPU1.Margin = new System.Windows.Forms.Padding(4);
             this.txtPPU1.Maximum = new decimal(new int[] {
             99999999,
             0,
@@ -656,7 +658,7 @@
             // 
             this.txtQty1.DecimalPlaces = 2;
             this.txtQty1.Location = new System.Drawing.Point(25, 175);
-            this.txtQty1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtQty1.Margin = new System.Windows.Forms.Padding(4);
             this.txtQty1.Maximum = new decimal(new int[] {
             0,
             0,
@@ -682,7 +684,7 @@
             this.cmbItemCode1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbItemCode1.FormattingEnabled = true;
             this.cmbItemCode1.Location = new System.Drawing.Point(25, 75);
-            this.cmbItemCode1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbItemCode1.Margin = new System.Windows.Forms.Padding(4);
             this.cmbItemCode1.Name = "cmbItemCode1";
             this.cmbItemCode1.Size = new System.Drawing.Size(434, 36);
             this.cmbItemCode1.TabIndex = 0;
@@ -741,9 +743,9 @@
             this.tabPage3.Controls.Add(this.chkPurchases);
             this.tabPage3.Controls.Add(this.chkSales);
             this.tabPage3.Location = new System.Drawing.Point(4, 30);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1227, 851);
+            this.tabPage3.Size = new System.Drawing.Size(1228, 852);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Transaction Report";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -756,7 +758,7 @@
             this.tabControl2.Controls.Add(this.tabPage4);
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Location = new System.Drawing.Point(19, 71);
-            this.tabControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl2.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl2.Multiline = true;
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
@@ -769,9 +771,9 @@
             this.tabPage4.Controls.Add(this.lblTotalStatus);
             this.tabPage4.Controls.Add(this.lvReport);
             this.tabPage4.Location = new System.Drawing.Point(4, 37);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage4.Size = new System.Drawing.Size(1173, 713);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "Report";
@@ -781,7 +783,7 @@
             // 
             this.lblTotalStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblTotalStatus.AutoSize = true;
-            this.lblTotalStatus.Location = new System.Drawing.Point(12, 681);
+            this.lblTotalStatus.Location = new System.Drawing.Point(12, 693);
             this.lblTotalStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalStatus.Name = "lblTotalStatus";
             this.lblTotalStatus.Size = new System.Drawing.Size(344, 28);
@@ -815,7 +817,7 @@
             this.lvReport.HighlightBackgroundColor = System.Drawing.SystemColors.Highlight;
             this.lvReport.HighlightForegroundColor = System.Drawing.Color.White;
             this.lvReport.Location = new System.Drawing.Point(12, 12);
-            this.lvReport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lvReport.Margin = new System.Windows.Forms.Padding(4);
             this.lvReport.Name = "lvReport";
             this.lvReport.OverlayText.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvReport.OverlayText.Text = "Double click to \'Print Invoice\'";
@@ -825,7 +827,7 @@
             this.lvReport.ShowCommandMenuOnRightClick = true;
             this.lvReport.ShowGroups = false;
             this.lvReport.ShowItemToolTips = true;
-            this.lvReport.Size = new System.Drawing.Size(1150, 666);
+            this.lvReport.Size = new System.Drawing.Size(1150, 678);
             this.lvReport.TabIndex = 6;
             this.lvReport.TintSortColumn = true;
             this.lvReport.UnfocusedHighlightBackgroundColor = System.Drawing.Color.SteelBlue;
@@ -872,9 +874,9 @@
             this.tabPage5.Controls.Add(this.label16);
             this.tabPage5.Controls.Add(this.label15);
             this.tabPage5.Location = new System.Drawing.Point(4, 37);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage5.Size = new System.Drawing.Size(1173, 713);
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "Statistics";
@@ -968,7 +970,7 @@
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.Location = new System.Drawing.Point(1075, 15);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(121, 36);
             this.btnSearch.TabIndex = 6;
@@ -981,7 +983,7 @@
             this.dtTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtTo.Location = new System.Drawing.Point(888, 12);
-            this.dtTo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtTo.Margin = new System.Windows.Forms.Padding(4);
             this.dtTo.Name = "dtTo";
             this.dtTo.Size = new System.Drawing.Size(179, 34);
             this.dtTo.TabIndex = 5;
@@ -1003,7 +1005,7 @@
             this.dtFrom.CustomFormat = "dd-MM-yyyy";
             this.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtFrom.Location = new System.Drawing.Point(650, 12);
-            this.dtFrom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtFrom.Margin = new System.Windows.Forms.Padding(4);
             this.dtFrom.Name = "dtFrom";
             this.dtFrom.Size = new System.Drawing.Size(175, 34);
             this.dtFrom.TabIndex = 3;
@@ -1025,7 +1027,7 @@
             this.chkPurchases.Checked = true;
             this.chkPurchases.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkPurchases.Location = new System.Drawing.Point(128, 21);
-            this.chkPurchases.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkPurchases.Margin = new System.Windows.Forms.Padding(4);
             this.chkPurchases.Name = "chkPurchases";
             this.chkPurchases.Size = new System.Drawing.Size(119, 32);
             this.chkPurchases.TabIndex = 1;
@@ -1039,7 +1041,7 @@
             this.chkSales.Checked = true;
             this.chkSales.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkSales.Location = new System.Drawing.Point(19, 21);
-            this.chkSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkSales.Margin = new System.Windows.Forms.Padding(4);
             this.chkSales.Name = "chkSales";
             this.chkSales.Size = new System.Drawing.Size(78, 32);
             this.chkSales.TabIndex = 0;
@@ -1061,11 +1063,11 @@
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmTransaction";
-            this.Padding = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.Padding = new System.Windows.Forms.Padding(12);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

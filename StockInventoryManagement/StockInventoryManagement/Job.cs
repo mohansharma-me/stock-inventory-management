@@ -80,7 +80,7 @@ namespace StockInventoryManagement
                     {
                         #region Database Initializing
 
-                        executeQuery("create table if not exists _transaction(tranId integer primary key autoincrement, tranTotalPrice double, tranTime datetime, tranType text, tranDeliveryAddress text, tranDeliveryDate datetime, tranDeleted integer default 0, tranClientId integer default 0)");
+                        executeQuery("create table if not exists _transaction(tranId integer primary key autoincrement, tranTotalPrice double, tranTotalDiscount double, tranTime datetime, tranType text, tranDeliveryAddress text, tranDeliveryDate datetime, tranDeleted integer default 0, tranClientId integer default 0)");
                         executeQuery("create table if not exists _transaction_data(dataId integer primary key autoincrement, dataTranId integer, dataItemId integer, dataQty double, dataDiscount double, dataPPU double, dataDeleted integer default 0)");
                         executeQuery("create table if not exists _item(itemId integer primary key autoincrement, itemName text, itemCode text, itemPPU double, itemDeleted integer default 0)");
                         executeQuery("create table if not exists _client(clientId integer primary key autoincrement, clientName text, clientSurname text, clientAddress text, clientLandline text, clientTelephone text, clientEmail text, clientRefCode text, clientDeleted integer default 0)");
@@ -570,18 +570,19 @@ namespace StockInventoryManagement
             }
 
             public static long LastTransactionID { get; set; }
-            public static bool addTransaction(double totalPrice, DateTime dateTime, classes.Transaction.TransactionType type, String deliveryAddress, DateTime? deliveryDate, List<classes.TransactionItem> items, long client_id = 0)
+            public static bool addTransaction(double totalPrice, double totalDiscount, DateTime dateTime, classes.Transaction.TransactionType type, String deliveryAddress, DateTime? deliveryDate, List<classes.TransactionItem> items, long client_id = 0)
             {
                 try
                 {
                     List<SQLiteParameter> parameters = new List<SQLiteParameter>();
                     parameters.Add(new SQLiteParameter("@client", client_id));
                     parameters.Add(new SQLiteParameter("@price", totalPrice));
+                    parameters.Add(new SQLiteParameter("@discount", totalDiscount));
                     parameters.Add(new SQLiteParameter("@time", dateTime));
                     parameters.Add(new SQLiteParameter("@type", type.ToString()));
                     parameters.Add(new SQLiteParameter("@deliveryAddress", deliveryAddress == null ? "" : deliveryAddress));
                     parameters.Add(new SQLiteParameter("@deliveryDate", !deliveryDate.HasValue ? DateTime.MinValue : deliveryDate.Value));
-                    int inserted = Job.Database.executeQuery("insert into _transaction(tranTotalPrice, tranTime, tranType, tranDeliveryAddress, tranDeliveryDate, tranClientId) values(@price,@time,@type,@deliveryAddress,@deliveryDate,@client)", parameters.ToArray());
+                    int inserted = Job.Database.executeQuery("insert into _transaction(tranTotalPrice, tranTotalDiscount, tranTime, tranType, tranDeliveryAddress, tranDeliveryDate, tranClientId) values(@price,@discount,@time,@type,@deliveryAddress,@deliveryDate,@client)", parameters.ToArray());
 
                     if (inserted == 1)
                     {
@@ -720,7 +721,7 @@ namespace StockInventoryManagement
         private static void PDoc_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             string client_name = "", client_address = "";
-            double total_price = 0;
+            double total_price = 0, total_discount=0;
             List<classes.Item> items = new List<classes.Item>();
 
             bool print = false;
@@ -729,6 +730,7 @@ namespace StockInventoryManagement
             {
                 long clientId = long.Parse(dr["tranClientId"].ToString());
                 total_price = double.Parse(dr["tranTotalPrice"].ToString());
+                total_discount = double.Parse(dr["tranTotalDiscount"].ToString());
                 if (clientId == 0)
                 {
 
@@ -817,14 +819,30 @@ namespace StockInventoryManagement
                 g.DrawLine(new Pen(blackBrush, 5), x, y, e.PageBounds.Width - 10, y);
                 y += baseFont.Height + 10;
 
-                x += 10 + 500;
-                //g.DrawString("Total: " + total_price.ToString("0.00"), baseFont, blackBrush, x, y);
+                x = 10 + 500;
+                g.DrawString("Total: ", baseFont, blackBrush, x, y);
+                x = 10 + 500 + 200;
+                g.DrawString((total_discount+total_price).ToString("0.00"), baseFont, blackBrush, x, y);
                 y += baseFont.Height + 10;
+
+
+                x = 10 + 500;
+                g.DrawString("Discount: ", baseFont, blackBrush, x, y);
+                x = 10 + 500 + 200;
+                g.DrawString(total_discount.ToString("0.00"), baseFont, blackBrush, x, y);
+                y += baseFont.Height + 10;
+
+                x = 10 + 500;
+                g.DrawString("Final Amount: ", baseFont, blackBrush, x, y);
+                x = 10 + 500 + 200;
+                g.DrawString(total_price.ToString("0.00"), baseFont, blackBrush, x, y);
+
+                //total_price.ToString("0.00")
+                //total_discount.ToString("0.00")
                 //double vat = total_price * Properties.Settings.Default.appSettingVAT / 100;
                 //g.DrawString("VAT: " + vat.ToString("0.00"), baseFont, blackBrush, x, y);
                 //vat += total_price;
-                y += baseFont.Height + 10;
-                g.DrawString("Final Amount: " + total_price.ToString("0.00"), baseFont, blackBrush, x, y);
+
             }
         }
 

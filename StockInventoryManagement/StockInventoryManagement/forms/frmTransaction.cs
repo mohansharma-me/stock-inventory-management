@@ -280,7 +280,7 @@ namespace StockInventoryManagement.forms
 
                         #region Submit new Transaction
 
-                        bool added = Job.Database.addTransaction(totalAmount, DateTime.Today, classes.Transaction.TransactionType.PURCHASE, "", null, tItems, clientId);
+                        bool added = Job.Database.addTransaction(totalAmount,0, DateTime.Today, classes.Transaction.TransactionType.PURCHASE, "", null, tItems, clientId);
                         if (added)
                         {
                             Invoke(new Action(() =>
@@ -385,7 +385,7 @@ namespace StockInventoryManagement.forms
             String itemCode = cmbItemCode.Text.Trim();
             double qty = double.Parse(txtQty.Value.ToString());
             double ppu = double.Parse(txtPPU.Value.ToString());
-            double dicount = double.Parse(txtDiscount.Value.ToString());
+            double dicount = 0;// double.Parse(txtDiscount.Value.ToString());
 
             if (itemCode.Length == 0)
             {
@@ -508,6 +508,15 @@ namespace StockInventoryManagement.forms
                 return;
             }*/
 
+            double discount = 0;
+            if(!double.TryParse(txtDiscount.Value.ToString(), out discount))
+            {
+                MessageBox.Show(this, "Please enter valid Discount value.", "Discount Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                txtDiscount.Focus();
+                return;
+            }
+            
+
             System.Collections.IEnumerable items = lvItemsSale.Objects;
 
             String deliveryAddress = txtDeliveryAddress.Text.Trim();
@@ -597,7 +606,7 @@ namespace StockInventoryManagement.forms
 
                         #region Submit new Transaction
 
-                        bool added = Job.Database.addTransaction(totalAmount, DateTime.Today, classes.Transaction.TransactionType.SALE, deliveryAddress, deliveryDate, tItems, client);
+                        bool added = Job.Database.addTransaction(totalAmount - discount, discount, DateTime.Today, classes.Transaction.TransactionType.SALE, deliveryAddress, deliveryDate, tItems, client);
                         if (added)
                         {
                             Invoke(new Action(() =>

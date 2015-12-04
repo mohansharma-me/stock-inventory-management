@@ -578,7 +578,7 @@ namespace StockInventoryManagement
                     parameters.Add(new SQLiteParameter("@client", client_id));
                     parameters.Add(new SQLiteParameter("@price", totalPrice));
                     parameters.Add(new SQLiteParameter("@discount", totalDiscount));
-                    parameters.Add(new SQLiteParameter("@time", dateTime));
+                    parameters.Add(new SQLiteParameter("@time", new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second)));
                     parameters.Add(new SQLiteParameter("@type", type.ToString()));
                     parameters.Add(new SQLiteParameter("@deliveryAddress", deliveryAddress == null ? "" : deliveryAddress));
                     parameters.Add(new SQLiteParameter("@deliveryDate", !deliveryDate.HasValue ? DateTime.MinValue : deliveryDate.Value));
@@ -722,6 +722,7 @@ namespace StockInventoryManagement
         {
             string client_name = "", client_address = "";
             double total_price = 0, total_discount=0;
+            DateTime? tran_datetime = default(DateTime?);
             List<classes.Item> items = new List<classes.Item>();
 
             bool print = false;
@@ -730,7 +731,18 @@ namespace StockInventoryManagement
             {
                 long clientId = long.Parse(dr["tranClientId"].ToString());
                 total_price = double.Parse(dr["tranTotalPrice"].ToString());
-                total_discount = double.Parse(dr["tranTotalDiscount"].ToString());
+                try
+                {
+                    total_discount = double.Parse(dr["tranTotalDiscount"].ToString());
+                }
+                catch(Exception) { }
+
+                try
+                {
+                    tran_datetime = (DateTime?)dr["tranTime"];
+                }
+                catch (Exception) { }
+
                 if (clientId == 0)
                 {
 
@@ -792,6 +804,15 @@ namespace StockInventoryManagement
                 g.DrawString("Bill To:", new Font(baseFont, FontStyle.Bold), blackBrush, x, y);
                 x += g.MeasureString("Bill To: ", baseFont).Width + 5;
                 g.DrawString(client_name, baseFont, blackBrush, x, y);
+
+                
+                if(tran_datetime.HasValue)
+                {
+                    string dateTimeString = tran_datetime.Value.ToString("dd-MM-yyyy hh:mm tt");
+                    float widthOfDTS = g.MeasureString(dateTimeString, baseFont).Width;
+                    g.DrawString(dateTimeString, baseFont, blackBrush, e.PageBounds.Width - widthOfDTS - 20, y);
+                }
+
 
                 y += (baseFont.Height * 2);
                 x = 10;

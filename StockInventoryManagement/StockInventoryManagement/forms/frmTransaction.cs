@@ -37,6 +37,8 @@ namespace StockInventoryManagement.forms
             txtQty.Maximum = txtQty1.Maximum = Decimal.MaxValue;
             txtPPU.Maximum = txtPPU1.Maximum = Decimal.MaxValue;
             txtDiscount.Maximum = Decimal.MaxValue;
+
+            dpInvoiceDate.Value = DateTime.Today;
             //init();
         }
 
@@ -188,6 +190,8 @@ namespace StockInventoryManagement.forms
 
         private void btnAddToStock_Click(object sender, EventArgs e)
         {
+
+            DateTime selectedDate = dpInvoiceDate_Purchase.Value;
             /*if(cmbClientRefPurchase.SelectedIndex==-1)
             {
                 MessageBox.Show(this, "Please select client from list shown near to 'Add to Stock' button.", "Client not selected", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -280,7 +284,7 @@ namespace StockInventoryManagement.forms
 
                         #region Submit new Transaction
 
-                        bool added = Job.Database.addTransaction(totalAmount,0, DateTime.Today, classes.Transaction.TransactionType.PURCHASE, "", null, tItems, clientId);
+                        bool added = Job.Database.addTransaction(totalAmount,0, selectedDate, classes.Transaction.TransactionType.PURCHASE, "", null, tItems, clientId);
                         if (added)
                         {
                             Invoke(new Action(() =>
@@ -500,7 +504,7 @@ namespace StockInventoryManagement.forms
 
         private void btnPrintInvoice_Click(object sender, EventArgs e)
         {
-
+            DateTime selectedDate = dpInvoiceDate.Value;
             /*if (cmbClientRef.SelectedIndex == -1)
             {
                 MessageBox.Show(this, "Please select client from list shown near 'Print Invoice' button.", "Client not selected", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -606,7 +610,7 @@ namespace StockInventoryManagement.forms
 
                         #region Submit new Transaction
 
-                        bool added = Job.Database.addTransaction(totalAmount - discount, discount, DateTime.Today, classes.Transaction.TransactionType.SALE, deliveryAddress, deliveryDate, tItems, client);
+                        bool added = Job.Database.addTransaction(totalAmount - discount, discount, selectedDate, classes.Transaction.TransactionType.SALE, deliveryAddress, deliveryDate, tItems, client);
                         if (added)
                         {
                             Invoke(new Action(() =>

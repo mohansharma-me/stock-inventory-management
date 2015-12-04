@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dpInvoiceDate = new System.Windows.Forms.DateTimePicker();
+            this.label20 = new System.Windows.Forms.Label();
             this.cmbClientRef = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtDelivery = new System.Windows.Forms.DateTimePicker();
@@ -57,6 +59,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dpInvoiceDate_Purchase = new System.Windows.Forms.DateTimePicker();
+            this.label21 = new System.Windows.Forms.Label();
             this.cmbClientRefPurchase = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.lvItemsPurchase = new BrightIdeasSoftware.ObjectListView();
@@ -135,6 +139,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.dpInvoiceDate);
+            this.tabPage1.Controls.Add(this.label20);
             this.tabPage1.Controls.Add(this.cmbClientRef);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.label10);
@@ -160,6 +166,27 @@
             this.tabPage1.Text = "Sale";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // dpInvoiceDate
+            // 
+            this.dpInvoiceDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dpInvoiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dpInvoiceDate.Location = new System.Drawing.Point(20, 470);
+            this.dpInvoiceDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dpInvoiceDate.Name = "dpInvoiceDate";
+            this.dpInvoiceDate.Size = new System.Drawing.Size(200, 34);
+            this.dpInvoiceDate.TabIndex = 15;
+            // 
+            // label20
+            // 
+            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(20, 430);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(129, 28);
+            this.label20.TabIndex = 14;
+            this.label20.Text = "Invoice Date :";
+            // 
             // cmbClientRef
             // 
             this.cmbClientRef.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -169,7 +196,7 @@
             this.cmbClientRef.Location = new System.Drawing.Point(112, 526);
             this.cmbClientRef.Margin = new System.Windows.Forms.Padding(4);
             this.cmbClientRef.Name = "cmbClientRef";
-            this.cmbClientRef.Size = new System.Drawing.Size(344, 36);
+            this.cmbClientRef.Size = new System.Drawing.Size(348, 36);
             this.cmbClientRef.TabIndex = 9;
             // 
             // groupBox1
@@ -338,7 +365,7 @@
             // 
             // btnClearSaleForm
             // 
-            this.btnClearSaleForm.Location = new System.Drawing.Point(370, 170);
+            this.btnClearSaleForm.Location = new System.Drawing.Point(370, 180);
             this.btnClearSaleForm.Margin = new System.Windows.Forms.Padding(4);
             this.btnClearSaleForm.Name = "btnClearSaleForm";
             this.btnClearSaleForm.Size = new System.Drawing.Size(105, 45);
@@ -349,7 +376,7 @@
             // 
             // btnAddSaleItem
             // 
-            this.btnAddSaleItem.Location = new System.Drawing.Point(260, 170);
+            this.btnAddSaleItem.Location = new System.Drawing.Point(260, 180);
             this.btnAddSaleItem.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddSaleItem.Name = "btnAddSaleItem";
             this.btnAddSaleItem.Size = new System.Drawing.Size(105, 45);
@@ -362,7 +389,7 @@
             // 
             this.txtDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtDiscount.DecimalPlaces = 2;
-            this.txtDiscount.Location = new System.Drawing.Point(130, 470);
+            this.txtDiscount.Location = new System.Drawing.Point(240, 470);
             this.txtDiscount.Margin = new System.Windows.Forms.Padding(4);
             this.txtDiscount.Maximum = new decimal(new int[] {
             999999999,
@@ -370,13 +397,13 @@
             0,
             0});
             this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(330, 34);
+            this.txtDiscount.Size = new System.Drawing.Size(230, 34);
             this.txtDiscount.TabIndex = 4;
             // 
             // txtPPU
             // 
             this.txtPPU.DecimalPlaces = 2;
-            this.txtPPU.Location = new System.Drawing.Point(30, 180);
+            this.txtPPU.Location = new System.Drawing.Point(30, 190);
             this.txtPPU.Margin = new System.Windows.Forms.Padding(4);
             this.txtPPU.Maximum = new decimal(new int[] {
             999999999,
@@ -391,7 +418,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 470);
+            this.label4.Location = new System.Drawing.Point(240, 430);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 28);
@@ -415,7 +442,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 135);
+            this.label3.Location = new System.Drawing.Point(30, 145);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(136, 28);
@@ -477,6 +504,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.dpInvoiceDate_Purchase);
+            this.tabPage2.Controls.Add(this.label21);
             this.tabPage2.Controls.Add(this.cmbClientRefPurchase);
             this.tabPage2.Controls.Add(this.label19);
             this.tabPage2.Controls.Add(this.lvItemsPurchase);
@@ -499,6 +528,27 @@
             this.tabPage2.Text = "Purchase";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // dpInvoiceDate_Purchase
+            // 
+            this.dpInvoiceDate_Purchase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dpInvoiceDate_Purchase.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dpInvoiceDate_Purchase.Location = new System.Drawing.Point(170, 640);
+            this.dpInvoiceDate_Purchase.Margin = new System.Windows.Forms.Padding(4);
+            this.dpInvoiceDate_Purchase.Name = "dpInvoiceDate_Purchase";
+            this.dpInvoiceDate_Purchase.Size = new System.Drawing.Size(300, 34);
+            this.dpInvoiceDate_Purchase.TabIndex = 17;
+            // 
+            // label21
+            // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(20, 640);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(129, 28);
+            this.label21.TabIndex = 16;
+            this.label21.Text = "Invoice Date :";
+            // 
             // cmbClientRefPurchase
             // 
             this.cmbClientRefPurchase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -508,7 +558,7 @@
             this.cmbClientRefPurchase.Location = new System.Drawing.Point(25, 726);
             this.cmbClientRefPurchase.Margin = new System.Windows.Forms.Padding(4);
             this.cmbClientRefPurchase.Name = "cmbClientRefPurchase";
-            this.cmbClientRefPurchase.Size = new System.Drawing.Size(449, 36);
+            this.cmbClientRefPurchase.Size = new System.Drawing.Size(445, 36);
             this.cmbClientRefPurchase.TabIndex = 15;
             // 
             // label19
@@ -783,7 +833,7 @@
             // 
             this.lblTotalStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblTotalStatus.AutoSize = true;
-            this.lblTotalStatus.Location = new System.Drawing.Point(12, 693);
+            this.lblTotalStatus.Location = new System.Drawing.Point(12, 729);
             this.lblTotalStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalStatus.Name = "lblTotalStatus";
             this.lblTotalStatus.Size = new System.Drawing.Size(344, 28);
@@ -827,7 +877,7 @@
             this.lvReport.ShowCommandMenuOnRightClick = true;
             this.lvReport.ShowGroups = false;
             this.lvReport.ShowItemToolTips = true;
-            this.lvReport.Size = new System.Drawing.Size(1150, 678);
+            this.lvReport.Size = new System.Drawing.Size(1150, 714);
             this.lvReport.TabIndex = 6;
             this.lvReport.TintSortColumn = true;
             this.lvReport.UnfocusedHighlightBackgroundColor = System.Drawing.Color.SteelBlue;
@@ -1174,6 +1224,9 @@
         private System.Windows.Forms.ComboBox cmbClientRefPurchase;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label lblTotalStatus;
-
+        private System.Windows.Forms.DateTimePicker dpInvoiceDate;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.DateTimePicker dpInvoiceDate_Purchase;
+        private System.Windows.Forms.Label label21;
     }
 }

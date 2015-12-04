@@ -764,12 +764,25 @@ namespace StockInventoryManagement
 
                 Font baseFont = new Font(FontFamily.GenericSansSerif, 16);
                 SolidBrush blackBrush = new SolidBrush(Color.Black);
+                SolidBrush grayBrush = new SolidBrush(Color.Gray);
                 Graphics g = e.Graphics;
                 float x = 10, y = 10;
                 g.DrawString(Properties.Settings.Default.appOwner, baseFont, blackBrush, x, y);
                 y += baseFont.Height + 5;
+
+                baseFont = new Font(FontFamily.GenericSansSerif, 14);
+                g.DrawString("Shope No.4, Om Complex", baseFont,grayBrush, x, y);
+                y += baseFont.Height + 5;
+
+                g.DrawString("Keriya Bypass Chowkdi", baseFont, grayBrush, x, y);
+                y += baseFont.Height + 5;
+
+                g.DrawString("Amreli - 365601", baseFont, grayBrush, x, y);
+                y += baseFont.Height + 5;
+
+                baseFont = new Font(FontFamily.GenericSansSerif, 14);
                 g.DrawString("", baseFont, blackBrush, x, y);
-                g.DrawString("INVOICE", new Font(baseFont, FontStyle.Bold), blackBrush, 600, y);
+                g.DrawString("INVOICE", new Font(baseFont, FontStyle.Bold), blackBrush, 600, y-100);
                 y += baseFont.Height + 15;
                 g.DrawLine(new Pen(blackBrush, 10), x, y, e.PageBounds.Width - 10, y);
                 y += baseFont.Height;
@@ -805,12 +818,13 @@ namespace StockInventoryManagement
                 y += baseFont.Height + 10;
 
                 x += 10 + 500;
-                g.DrawString("Total: " + total_price.ToString("0.00"), baseFont, blackBrush, x, y);
+                //g.DrawString("Total: " + total_price.ToString("0.00"), baseFont, blackBrush, x, y);
                 y += baseFont.Height + 10;
-                double vat = total_price * Properties.Settings.Default.appSettingVAT / 100;
-                vat += total_price;
-                g.DrawString("VAT: " + vat.ToString("0.00"), baseFont, blackBrush, x, y);
-
+                //double vat = total_price * Properties.Settings.Default.appSettingVAT / 100;
+                //g.DrawString("VAT: " + vat.ToString("0.00"), baseFont, blackBrush, x, y);
+                //vat += total_price;
+                y += baseFont.Height + 10;
+                g.DrawString("Final Amount: " + total_price.ToString("0.00"), baseFont, blackBrush, x, y);
             }
         }
 

@@ -188,19 +188,53 @@ namespace StockInventoryManagement.forms
 
         private void btnAddToStock_Click(object sender, EventArgs e)
         {
-            if(cmbClientRefPurchase.SelectedIndex==-1)
+            /*if(cmbClientRefPurchase.SelectedIndex==-1)
             {
                 MessageBox.Show(this, "Please select client from list shown near to 'Add to Stock' button.", "Client not selected", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cmbClientRefPurchase.Focus();
                 return;
-            }
+            }*/
+
             // iterate each added item
             // find existing if not add that new item
             // prepare transaction item list
             // add new transaction with items
-            long clientId = (cmbClientRefPurchase.SelectedItem as classes.Client).id;
+            long clientId = 0;
+            if(cmbClientRefPurchase.SelectedIndex>-1)
+            {
+                clientId = (cmbClientRefPurchase.SelectedItem as classes.Client).id;
+            }
+            else
+            {
+                try
+                {
+                    string clientName = cmbClientRefPurchase.Text;
+                    if(clientName.Trim().Length==0)
+                    {
+                        MessageBox.Show(this, "Please enter valid client name."+Environment.NewLine+"Unable to add client entry, please try again.", "Client Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cmbClientRefPurchase.Focus();
+                        return;
+                    }
+                    else
+                    {
+                        if(!Job.Database.addClient(clientName, "", "", "", "", "", ""))
+                        {
+                            MessageBox.Show(this, "Client name not added successfully into database." + Environment.NewLine + "Unable to add client entry, please try again.", "Client Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            cmbClientRefPurchase.Focus();
+                            return;
+                        }
+                        clientId = Job.Database.last_inserted_rowid();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, "Unable to add client entry, please try again." + Environment.NewLine + "Error Message: " + ex, "Client Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cmbClientRefPurchase.Focus();
+                    return;
+                }
+            }
             System.Collections.IEnumerable items = lvItemsPurchase.Objects;
-
+            
             new System.Threading.Thread(() =>
             {
 
@@ -467,12 +501,12 @@ namespace StockInventoryManagement.forms
         private void btnPrintInvoice_Click(object sender, EventArgs e)
         {
 
-            if (cmbClientRef.SelectedIndex == -1)
+            /*if (cmbClientRef.SelectedIndex == -1)
             {
                 MessageBox.Show(this, "Please select client from list shown near 'Print Invoice' button.", "Client not selected", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cmbClientRef.Focus();
                 return;
-            }
+            }*/
 
             System.Collections.IEnumerable items = lvItemsSale.Objects;
 
@@ -481,7 +515,42 @@ namespace StockInventoryManagement.forms
             if (deliveryAddress.Length > 0)
                 deliveryDate = dtDelivery.Value;
 
-            long client = ((classes.Client)cmbClientRef.SelectedItem).id;
+            long client = 0;// ((classes.Client)cmbClientRef.SelectedItem).id;
+
+            if (cmbClientRef.SelectedIndex > -1)
+            {
+                client = (cmbClientRef.SelectedItem as classes.Client).id;
+            }
+            else
+            {
+                try
+                {
+                    string clientName = cmbClientRef.Text;
+                    if (clientName.Trim().Length == 0)
+                    {
+                        MessageBox.Show(this, "Please enter valid client name." + Environment.NewLine + "Unable to add client entry, please try again.", "Client Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cmbClientRef.Focus();
+                        return;
+                    }
+                    else
+                    {
+                        if (!Job.Database.addClient(clientName, "", "", "", "", "", ""))
+                        {
+                            MessageBox.Show(this, "Client name not added successfully into database." + Environment.NewLine + "Unable to add client entry, please try again.", "Client Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            cmbClientRef.Focus();
+                            return;
+                        }
+                        client = Job.Database.last_inserted_rowid();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, "Unable to add client entry, please try again." + Environment.NewLine + "Error Message: " + ex, "Client Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cmbClientRef.Focus();
+                    return;
+                }
+            }
+
             new System.Threading.Thread(() =>
             {
 

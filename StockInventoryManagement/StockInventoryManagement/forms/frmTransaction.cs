@@ -666,7 +666,12 @@ namespace StockInventoryManagement.forms
             {
                 if (r is DateTime?)
                 {
-                    return ((DateTime?)r).Value.ToShortDateString();
+                    DateTime? dt = ((DateTime?)r).Value;
+                    if(dt.HasValue)
+                    {
+                        return dt.Value.ToShortDateString() + " " + dt.Value.ToShortTimeString();
+                    }
+                    return "";
                 }
                 return "";
             };

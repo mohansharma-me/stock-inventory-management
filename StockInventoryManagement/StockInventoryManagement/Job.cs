@@ -4,6 +4,7 @@ using System.Data.SQLite;
 using System.Windows.Forms;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 
 namespace StockInventoryManagement
 {
@@ -302,7 +303,7 @@ namespace StockInventoryManagement
                     param[0] = new SQLiteParameter("@from", from);
                     param[1] = new SQLiteParameter("@to", to);
                     //SQLiteDataReader dr = Job.Database.executeReader("select tranTime as DATES, tranType as TYPE, sum(tranTotalPrice) as AMOUNT from _transaction " + where + " group by tranTime, tranType", param);
-                    SQLiteDataReader dr = Job.Database.executeReader("select tranId, tranTime as DATES, tranType as TYPE, tranTotalPrice as AMOUNT from _transaction " + where, param);
+                    SQLiteDataReader dr = Job.Database.executeReader("select tranId, tranTime as DATES, tranType as TYPE, tranTotalPrice as AMOUNT from _transaction " + where+" order by tranTime", param);
                     if (dr != null)
                     {
                         while (dr.Read())
@@ -346,7 +347,7 @@ namespace StockInventoryManagement
 
                     #region Minimum and Maximum Items sold
                     double min = double.MaxValue, max = 0;
-                    SQLiteDataReader dr1 = Job.Database.executeReader("select itemName, sum(dataQty) as QTY from _item left join (select dataQty, dataItemId from _transaction, _transaction_data where dataTranId=tranId and tranTime>=@from and tranTime<=@to) on dataItemId=itemId group by itemId", param);
+                    SQLiteDataReader dr1 = Job.Database.executeReader("select itemName, sum(dataQty) as QTY from _item left join (select dataQty, dataItemId, tranTime from _transaction, _transaction_data where dataTranId=tranId and tranTime>=@from and tranTime<=@to) on dataItemId=itemId group by itemId order by tranTime", param);
                     if (dr1 != null)
                     {
                         while (dr1.Read())
@@ -696,6 +697,12 @@ namespace StockInventoryManagement
             {
                 printTranID = tranId;
                 System.Drawing.Printing.PrintDocument pDoc = new System.Drawing.Printing.PrintDocument();
+                int neededWidth = 600, height = 800;
+                pDoc.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
+                pDoc.DefaultPageSettings.PaperSize = new PaperSize("Custom", neededWidth, height);
+                pDoc.DefaultPageSettings.PaperSize.Height = height;
+                pDoc.DefaultPageSettings.PaperSize.Width = neededWidth;
+
                 pDoc.PrintPage += PDoc_PrintPage;
 
                 //PrintDialog printDialog = new PrintDialog();
@@ -720,6 +727,7 @@ namespace StockInventoryManagement
 
         private static void PDoc_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            long tranId = 0;
             string client_name = "", client_address = "";
             double total_price = 0, total_discount=0;
             DateTime? tran_datetime = default(DateTime?);
@@ -729,6 +737,7 @@ namespace StockInventoryManagement
             SQLiteDataReader dr = Database.executeReader("select * from _transaction where tranId=@id", new SQLiteParameter[] { new SQLiteParameter("@id", printTranID) });
             if (dr.Read())
             {
+                tranId = long.Parse(dr["tranId"].ToString());
                 long clientId = long.Parse(dr["tranClientId"].ToString());
                 total_price = double.Parse(dr["tranTotalPrice"].ToString());
                 try
@@ -792,14 +801,19 @@ namespace StockInventoryManagement
                 y += baseFont.Height + 5;
 
                 g.DrawString("Amreli - 365601", baseFont, grayBrush, x, y);
-                y += baseFont.Height + 5;
+                //y += baseFont.Height + 5;
 
                 baseFont = new Font(FontFamily.GenericSansSerif, 14);
-                g.DrawString("", baseFont, blackBrush, x, y);
-                g.DrawString("INVOICE", new Font(baseFont, FontStyle.Bold), blackBrush, 600, y-100);
+                //g.DrawString("", baseFont, blackBrush, x, y);
+                g.DrawString("INVOICE NUMBER", baseFont, blackBrush, 400, 10);
+                g.DrawString("#" + tranId, new Font(baseFont.FontFamily, 10), blackBrush, 400, 10 + baseFont.Height + 5);
+
                 y += baseFont.Height + 15;
                 g.DrawLine(new Pen(blackBrush, 10), x, y, e.PageBounds.Width - 10, y);
                 y += baseFont.Height;
+
+
+                baseFont = new Font(FontFamily.GenericSansSerif, 10);
 
                 g.DrawString("Bill To:", new Font(baseFont, FontStyle.Bold), blackBrush, x, y);
                 x += g.MeasureString("Bill To: ", baseFont).Width + 5;
@@ -810,53 +824,76 @@ namespace StockInventoryManagement
                 {
                     string dateTimeString = tran_datetime.Value.ToString("dd-MM-yyyy hh:mm tt");
                     float widthOfDTS = g.MeasureString(dateTimeString, baseFont).Width;
-                    g.DrawString(dateTimeString, baseFont, blackBrush, e.PageBounds.Width - widthOfDTS - 20, y);
+                    g.DrawString(dateTimeString, new Font(baseFont, FontStyle.Italic), blackBrush, e.PageBounds.Width - widthOfDTS - 20, y);
                 }
 
+                int gap1 = 10, gap2 = 250, gap3 = 200;
 
                 y += (baseFont.Height * 2);
-                x = 10;
-                g.DrawString("Items", baseFont, blackBrush, x, y);
-                x += 500;
-                g.DrawString("Qty", baseFont, blackBrush, x, y);
-                x += 200;
-                g.DrawString("Amount", baseFont, blackBrush, x, y);
-                y += baseFont.Height + 15;
-                x = 10;
-                g.DrawLine(new Pen(blackBrush, 5), x, y, e.PageBounds.Width - 10, y);
-                y += baseFont.Height + 10;
+                x = gap1;
+                g.DrawString("Items", new Font(baseFont, FontStyle.Bold), blackBrush, x, y);
+                x += gap2;
+                g.DrawString("Qty x Rate", new Font(baseFont, FontStyle.Bold), blackBrush, x, y);
+                x += gap3;
+                g.DrawString("Amount", new Font(baseFont, FontStyle.Bold), blackBrush, x, y);
+                y += baseFont.Height + 5;
+                x = gap1;
+                g.DrawLine(new Pen(blackBrush, 1), x, y, e.PageBounds.Width - 10, y);
+                y += baseFont.Height;
 
                 foreach (classes.Item item in items)
                 {
-                    x = 10;
+                    x = gap1;
                     g.DrawString(item.itemName, baseFont, blackBrush, x, y);
-                    x += 500;
-                    g.DrawString(item.qty.ToString("0.00"), baseFont, blackBrush, x, y);
-                    x += 200;
+                    x += gap2;
+                    double itemRate = item.itemPPU / item.qty;
+                    g.DrawString(item.qty.ToString("0.00") + " x " + itemRate.ToString("0.00"), baseFont, blackBrush, x, y);
+                    x += gap3;
                     g.DrawString(item.itemPPU.ToString("0.00"), baseFont, blackBrush, x, y);
-                    y += baseFont.Height + 15;
+                    y += baseFont.Height + 7;
+                    g.DrawLine(new Pen(new SolidBrush(Color.DimGray), 1), 10, y, e.PageBounds.Width - 10, y);
+                    y += 7;
                 }
-                x = 10;
-                g.DrawLine(new Pen(blackBrush, 5), x, y, e.PageBounds.Width - 10, y);
+
+                x = gap1;
+                //g.DrawLine(new Pen(blackBrush, 5), x, y, e.PageBounds.Width - 10, y);
                 y += baseFont.Height + 10;
 
-                x = 10 + 500;
+                x = gap2 + gap1;
                 g.DrawString("Total: ", baseFont, blackBrush, x, y);
-                x = 10 + 500 + 200;
+                x = gap1 + gap2 + gap3;
                 g.DrawString((total_discount+total_price).ToString("0.00"), baseFont, blackBrush, x, y);
-                y += baseFont.Height + 10;
+                y += baseFont.Height + 5;
+                g.DrawLine(new Pen(new SolidBrush(Color.DimGray), 1), x-gap3, y, e.PageBounds.Width - 10, y);
+                y += 5;
 
 
-                x = 10 + 500;
+                x = gap1 + gap2;
                 g.DrawString("Discount: ", baseFont, blackBrush, x, y);
-                x = 10 + 500 + 200;
+                x = gap1 + gap2 + gap3;
                 g.DrawString(total_discount.ToString("0.00"), baseFont, blackBrush, x, y);
-                y += baseFont.Height + 10;
+                y += baseFont.Height + 5;
+                g.DrawLine(new Pen(new SolidBrush(Color.DimGray), 1), x - gap3, y, e.PageBounds.Width - 10, y);
+                y += 5;
 
-                x = 10 + 500;
+                x = gap1 + gap2;
                 g.DrawString("Final Amount: ", baseFont, blackBrush, x, y);
-                x = 10 + 500 + 200;
+                x = gap1 + gap2 + gap3;
                 g.DrawString(total_price.ToString("0.00"), baseFont, blackBrush, x, y);
+                y += baseFont.Height + 5;
+                g.DrawLine(new Pen(new SolidBrush(Color.DimGray), 1), x - gap3, y, e.PageBounds.Width - 10, y);
+                y += 5;
+
+                x = 10;
+                y = e.PageBounds.Height - baseFont.Height * 4;
+                g.DrawLine(new Pen(new SolidBrush(Color.DimGray), 1), x, y, e.PageBounds.Width - 10, y);
+                y += 15;
+
+                g.DrawString("Chintan Patel", new Font(baseFont, FontStyle.Bold), blackBrush, x, y);
+                g.DrawString("Vijay Patel", new Font(baseFont, FontStyle.Bold), blackBrush, e.PageBounds.Width - 15 - g.MeasureString("Vijay Patel", baseFont).Width, y);
+                y += baseFont.Height + 5;
+                g.DrawString("+91-9408453132", baseFont, blackBrush, x, y);
+                g.DrawString("+91-9824966001", baseFont, blackBrush, e.PageBounds.Width - 10 - g.MeasureString("+91-9824966001", baseFont).Width, y);
 
                 //total_price.ToString("0.00")
                 //total_discount.ToString("0.00")

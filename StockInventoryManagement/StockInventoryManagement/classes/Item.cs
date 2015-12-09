@@ -8,8 +8,8 @@ namespace StockInventoryManagement.classes
     public class Item
     {
         public long id;
-        public String itemName;
-        public String itemCode;
+        public String itemName; // client name for stock report
+        public String itemCode; // tranType for stock report
         public double itemPPU;
 
 
@@ -17,6 +17,8 @@ namespace StockInventoryManagement.classes
         public double qty;
 
         public bool inited = false;
+
+        public object extraData; // for any purpose
 
         public void init(ref System.Data.SQLite.SQLiteDataReader dr)
         {

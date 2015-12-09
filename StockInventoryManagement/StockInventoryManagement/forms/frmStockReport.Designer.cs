@@ -1,6 +1,6 @@
 ﻿namespace StockInventoryManagement.forms
 {
-    partial class frmStock
+    partial class frmStockReport
     {
         /// <summary>
         /// Required designer variable.
@@ -29,36 +29,40 @@
         private void InitializeComponent()
         {
             this.lvStock = new BrightIdeasSoftware.ObjectListView();
-            this.olvColumnRef = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.olvColumnWoodType = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn4 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn5 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             ((System.ComponentModel.ISupportInitialize)(this.lvStock)).BeginInit();
             this.SuspendLayout();
             // 
             // lvStock
             // 
-            this.lvStock.AllColumns.Add(this.olvColumnRef);
-            this.lvStock.AllColumns.Add(this.olvColumnWoodType);
+            this.lvStock.AllColumns.Add(this.olvColumn5);
+            this.lvStock.AllColumns.Add(this.olvColumn2);
             this.lvStock.AllColumns.Add(this.olvColumn3);
+            this.lvStock.AllColumns.Add(this.olvColumn4);
             this.lvStock.AllowColumnReorder = true;
             this.lvStock.AlternateRowBackColor = System.Drawing.Color.Gainsboro;
             this.lvStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lvStock.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.DoubleClick;
             this.lvStock.CellEditTabChangesRows = true;
             this.lvStock.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.olvColumnRef,
-            this.olvColumnWoodType,
-            this.olvColumn3});
+            this.olvColumn5,
+            this.olvColumn2,
+            this.olvColumn3,
+            this.olvColumn4});
             this.lvStock.Cursor = System.Windows.Forms.Cursors.Default;
             this.lvStock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvStock.EmptyListMsg = "Stock Empty";
             this.lvStock.EmptyListMsgFont = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvStock.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lvStock.FullRowSelect = true;
             this.lvStock.GridLines = true;
             this.lvStock.HeaderWordWrap = true;
             this.lvStock.HighlightBackgroundColor = System.Drawing.SystemColors.Highlight;
             this.lvStock.HighlightForegroundColor = System.Drawing.Color.White;
-            this.lvStock.Location = new System.Drawing.Point(12, 12);
+            this.lvStock.Location = new System.Drawing.Point(0, 0);
             this.lvStock.Margin = new System.Windows.Forms.Padding(4);
             this.lvStock.Name = "lvStock";
             this.lvStock.OverlayText.Text = "";
@@ -67,8 +71,8 @@
             this.lvStock.ShowCommandMenuOnRightClick = true;
             this.lvStock.ShowGroups = false;
             this.lvStock.ShowItemToolTips = true;
-            this.lvStock.Size = new System.Drawing.Size(1236, 886);
-            this.lvStock.TabIndex = 4;
+            this.lvStock.Size = new System.Drawing.Size(582, 453);
+            this.lvStock.TabIndex = 5;
             this.lvStock.TintSortColumn = true;
             this.lvStock.UnfocusedHighlightBackgroundColor = System.Drawing.Color.SteelBlue;
             this.lvStock.UnfocusedHighlightForegroundColor = System.Drawing.Color.White;
@@ -80,49 +84,51 @@
             this.lvStock.UseHotItem = true;
             this.lvStock.UseHyperlinks = true;
             this.lvStock.View = System.Windows.Forms.View.Details;
-            this.lvStock.CellClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.lvStock_CellClick);
             this.lvStock.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvStock_MouseDoubleClick);
             // 
-            // olvColumnRef
+            // olvColumn2
             // 
-            this.olvColumnRef.AspectName = "itemCode";
-            this.olvColumnRef.IsEditable = false;
-            this.olvColumnRef.Text = "Reference";
-            this.olvColumnRef.Width = 104;
-            // 
-            // olvColumnWoodType
-            // 
-            this.olvColumnWoodType.AspectName = "itemName";
-            this.olvColumnWoodType.IsEditable = false;
-            this.olvColumnWoodType.Text = "Item";
-            this.olvColumnWoodType.Width = 184;
+            this.olvColumn2.AspectName = "itemName";
+            this.olvColumn2.IsEditable = false;
+            this.olvColumn2.Text = "Client";
+            this.olvColumn2.Width = 100;
             // 
             // olvColumn3
             // 
             this.olvColumn3.AspectName = "qty";
             this.olvColumn3.IsEditable = false;
-            this.olvColumn3.Text = "Available";
-            this.olvColumn3.Width = 142;
+            this.olvColumn3.Text = "Qty";
+            this.olvColumn3.Width = 130;
             // 
-            // frmStock
+            // olvColumn4
+            // 
+            this.olvColumn4.AspectName = "itemPPU";
+            this.olvColumn4.IsEditable = false;
+            this.olvColumn4.Text = "Rate";
+            this.olvColumn4.Width = 128;
+            // 
+            // olvColumn5
+            // 
+            this.olvColumn5.AspectName = "extraData";
+            this.olvColumn5.IsEditable = false;
+            this.olvColumn5.Text = "Date Time";
+            this.olvColumn5.Width = 128;
+            // 
+            // frmStockReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1260, 910);
+            this.ClientSize = new System.Drawing.Size(582, 453);
             this.Controls.Add(this.lvStock);
-            this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmStock";
-            this.Padding = new System.Windows.Forms.Padding(12);
+            this.MinimumSize = new System.Drawing.Size(600, 500);
+            this.Name = "frmStockReport";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sales";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frmSale_Load);
+            this.Text = "Stock Report";
+            this.Load += new System.EventHandler(this.frmStockReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lvStock)).EndInit();
             this.ResumeLayout(false);
 
@@ -131,9 +137,9 @@
         #endregion
 
         public BrightIdeasSoftware.ObjectListView lvStock;
-        private BrightIdeasSoftware.OLVColumn olvColumnRef;
-        private BrightIdeasSoftware.OLVColumn olvColumnWoodType;
+        private BrightIdeasSoftware.OLVColumn olvColumn2;
         private BrightIdeasSoftware.OLVColumn olvColumn3;
-
+        private BrightIdeasSoftware.OLVColumn olvColumn4;
+        private BrightIdeasSoftware.OLVColumn olvColumn5;
     }
 }

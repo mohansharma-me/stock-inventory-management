@@ -464,6 +464,60 @@ namespace StockInventoryManagement
 
                 return items;
             }
+
+            public static List<classes.Item> getItem_TransactionDetails(long itemId)
+            {
+                List<classes.Item> items = new List<classes.Item>();
+
+                try
+                {
+                    SQLiteDataReader dr = executeReader("select tranId, tranTime, tranType, clientName, dataQty, dataDiscount, dataPPU from (select tranId, tranTime, tranType, clientName from _transaction, _client where tranClientId=clientId)a, _transaction_data where dataTranId=tranId and dataItemId=@itemId order by tranTime desc, tranId desc", new SQLiteParameter[] { new SQLiteParameter("@itemId", itemId) });
+                    if (dr != null)
+                    {
+                        classes.Item tmpItem = null;
+                        while (dr.Read())
+                        {
+                            tmpItem = new classes.Item();
+                            try
+                            {
+                                tmpItem.id = long.Parse(dr["tranId"].ToString());
+                                
+                                tmpItem.itemName = dr["clientName"].ToString();
+                                tmpItem.itemCode = dr["tranType"].ToString();
+                                tmpItem.qty = double.Parse(dr["dataQty"].ToString());
+
+                                switch (tmpItem.itemCode)
+                                {
+                                    case "PURCHASE": tmpItem.itemCode = "IN"; break;
+                                    case "SALE": tmpItem.itemCode = "OUT"; tmpItem.qty = 0 - tmpItem.qty; break;
+                                    default:
+                                        tmpItem.itemCode = tmpItem.itemCode + "";
+                                        break;
+                                }
+
+                                tmpItem.itemPPU = double.Parse(dr["dataPPU"].ToString());
+                                tmpItem.extraData = (DateTime?)dr["tranTime"];
+                                tmpItem.inited = true;
+                            }
+                            catch (Exception) { tmpItem = null; }
+                            finally
+                            {
+                                if (tmpItem != null && tmpItem.inited)
+                                {
+                                    items.Add(tmpItem);
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Unable to retrieve stock report items from database.");
+                }
+
+                return items;
+            }
+
             public static bool addItem(String itemName, String itemCode, double itemPPU)
             {
 

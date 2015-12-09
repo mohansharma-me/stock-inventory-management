@@ -60,5 +60,25 @@ namespace StockInventoryManagement.forms
 
             }).Start();
         }
+
+        private void lvStock_CellClick(object sender, BrightIdeasSoftware.CellClickEventArgs e)
+        {
+            
+        }
+
+        private void lvStock_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (lvStock.SelectedIndex > -1 && lvStock.SelectedObject != null)
+            {
+                try
+                {
+                    new frmStockReport((lvStock.SelectedObject as classes.Item).id, (lvStock.SelectedObject as classes.Item).itemName).ShowDialog(this);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, "System error : " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

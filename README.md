@@ -6,7 +6,7 @@ I developed this software for my friends to manage his stock things and little b
 
 Software has following basic features invoice printing, account management, client profile management, stock management, report generation etc…
 
-I’ve uploaded source code at http://github.com/mohansharma-me/stock-inventory-management.
+I’ve uploaded source code at http://github.com/mohansharma-me/stock-inventory-management (feel free to use it).
 
 Portfolio link : http://mohansharma.me/portfolio/software-development/stock-inventory-management/
 
